@@ -1,0 +1,116 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-image: url('/Imagenes/fondo.png'); /* fondo con huellitas */
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-bottom: 3px solid #1e4d91;
+    padding: 10px 20px;
+}
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+}
+
+header h1 {
+    color: #1e4d91;
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Centrar el contenido principal (formulario) */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background-color: white;
+    width: 50%;
+    height: 50%;
+    margin: 40px auto;
+    padding: 30px;
+    border: 2px solid orange;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.form-container h2 {
+    color: #1e4d91;
+}
+
+/* Estilo del formulario */
+form input,
+form select,
+form button {
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 20px;
+    border: 2px solid #1e4d91;
+    font-size: 14px;
+}
+
+form button {
+    background-color: #1e4d91;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+form button:hover {
+    background-color: #16396e;
+}
+
+/* Enlace de olvidó contraseña */
+.forgot-link {
+    margin: 5px 0 10px 0;
+    text-align: right;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.forgot-link a {
+    color: #1e4d91;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.forgot-link a:hover {
+    text-decoration: underline;
+}
+
+/* Mensajes de error y éxito */
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.success-message {
+    color: green;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
