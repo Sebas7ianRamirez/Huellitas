@@ -48,19 +48,22 @@ header h1 {
     background-color: white;
     width: 50%;
     height: 50%;
-    margin: 40px auto;
+    margin: 0 auto;
     padding: 30px;
     border: 2px solid orange;
     border-radius: 15px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .form-container h2 {
     color: #1e4d91;
+    margin-bottom: 20px;
 }
 
 /* Estilo del formulario */
 form input,
+form select,
 form button {
     width: 90%;
     margin-bottom: 10px;
@@ -68,49 +71,44 @@ form button {
     border-radius: 20px;
     border: 2px solid #1e4d91;
     font-size: 14px;
+    box-sizing: border-box;
 }
 
 form button {
-    width: 90%;
     background-color: #1e4d91;
     color: white;
     font-weight: bold;
     cursor: pointer;
     border: none;
+    transition: background 0.2s;
 }
 
 form button:hover {
     background-color: #16396e;
 }
 
-/* Enlace de olvidó contraseña */
-.forgot-link {
-    margin: 5px 0 10px 0;
-    text-align: right;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.forgot-link a {
-    color: #1e4d91;
-    text-decoration: none;
-    font-size: 13px;
-}
-
-.forgot-link a:hover {
-    text-decoration: underline;
-}
-
 /* Mensajes de error y éxito */
-.error-message {
+.error-message,
+form p[style*="color:red"] {
     color: red;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-.success-message {
+.success-message,
+form p[style*="color:green"] {
     color: green;
     margin-bottom: 10px;
     font-weight: bold;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 700px) {
+    .form-container {
+        width: 90%;
+        padding: 15px;
+    }
+    .main-content {
+        padding: 10px 0;
+    }
 }
