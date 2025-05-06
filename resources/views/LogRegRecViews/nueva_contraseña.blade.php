@@ -11,6 +11,15 @@
         <p style="color:red;">{{ session('error') }}</p>
     @endif
 
+    {{-- Mostrar errores de validación --}}
+    @if ($errors->any())
+        <ul style="color:red;">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <form method="POST" action="{{ route('forgot.actualizar') }}">
         @csrf
         <input type="password" name="password" placeholder="Nueva contraseña" required><br>
