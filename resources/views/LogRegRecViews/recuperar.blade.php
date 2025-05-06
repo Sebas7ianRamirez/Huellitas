@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Recuperar Contraseña</title>
-    <link rel="stylesheet" href="{{ asset('CSS/recuperar.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/CSS Autenticacion/recuperar.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
 </head>
 <body>

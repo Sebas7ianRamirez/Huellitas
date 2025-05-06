@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Actualizar Contraseña</title>
-    <link rel="stylesheet" href="{{ asset('CSS/nueva_contraseña.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/CSS Autenticacion/nueva_contraseña.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
 </head>
 <body>

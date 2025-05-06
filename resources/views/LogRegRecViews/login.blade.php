@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="{{ asset('CSS/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/CSS Autenticacion/login.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
 </head>
 <body>

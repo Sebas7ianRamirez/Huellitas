@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Registro</title>
-    <link rel="stylesheet" href="{{ asset('CSS/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/CSS Autenticacion/register.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
 </head>
 <body>
