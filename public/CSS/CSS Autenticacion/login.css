@@ -47,12 +47,20 @@ header h1 {
 .form-container {
     background-color: white;
     width: 50%;
-    height: 50%;
+    /*height: 50%;*/
     margin: 40px auto;
     padding: 30px;
     border: 2px solid orange;
     border-radius: 15px;
     text-align: center;
+}
+
+.perrito-img {
+    width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto 16px auto;
+    max-width: 200px; /* Opcional para limitar el tamaño máximo */
 }
 
 .form-container h2 {

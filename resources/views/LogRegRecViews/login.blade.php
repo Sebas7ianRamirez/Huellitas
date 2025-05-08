@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="{{ asset('CSS/CSS Autenticacion/login.css') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.svg') }}">
 </head>
 <body>
     <header>
@@ -14,6 +14,8 @@
 
     <div class="main-content">
         <div class="form-container">
+            <!-- Imagen encima del título -->
+            <img src="{{ asset('Imagenes/perrito.svg') }}" alt="Perrito" class="perrito-img">
             <h2>Inicia Sesión</h2>
 
             @if(session('error'))
