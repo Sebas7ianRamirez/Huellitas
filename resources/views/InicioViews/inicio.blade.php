@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,6 +32,18 @@
             <h2 class="mensaje-principal">PEQUEÑAS ACCIONES</h2>
             <h3 class="mensaje-secundario">GRANDES CAMBIOS PARA ELLOS.</h3>
             <button class="btn-donar">Hacer Donación</button>
+        </div>
+    </section>
+    <section class="seccion-grafica">
+        <h2 class="titulo-gracias">GRACIAS POR TU GENEROSIDAD</h2> 
+        <div class="contenido-grafica">
+            <div class="mensaje-gracias">
+                <p> 
+                    <strong>¡Sin tu ayuda no sería posible todo esto!</strong>
+                </p>     
+            </div> 
+            <!-- Imagen de ejemplo para simular la gráfica --> 
+            <img src="{{ asset('Imagenes/Estadistica ejemplo.jpg') }}" alt="Ejemplo de gráfica de donaciones" class="grafica-ejemplo" width="300"   height="300">  
         </div>
     </section>
 </body>
