@@ -15,12 +15,14 @@ Route::get('/recuperar', [AuthController::class, 'showForgot'])->name('forgot.fo
 Route::post('/recuperar-buscar', [AuthController::class, 'buscarPregunta'])->name('forgot.buscar');
 Route::post('/recuperar-validar', [AuthController::class, 'validarRespuesta'])->name('forgot.validar');
 
-Route::get('/nueva-contrasena', function () {
+Route::get('/nueva-contrasena', function () { //Mostrar actualizar contraseña
     return view('LogRegRecViews.nueva_contraseña');
 })->name('forgot.nueva');
+Route::post('/nueva-contrasena', [AuthController::class, 'actualizarContraseña'])->name('forgot.actualizar'); //Vista actualizar
 
-Route::post('/nueva-contrasena', [AuthController::class, 'actualizarContraseña'])->name('forgot.actualizar');
-
+Route::get('/inicio', function () {
+    return view('InicioViews.inicio');
+})->name('inicio');
 
 Route::get('/', function () {
     return view('welcome');
