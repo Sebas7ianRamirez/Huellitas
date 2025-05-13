@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DonacionController; //Controlador de Donaciones
 
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form'); //Mostrar Registro
 Route::post('/register', [AuthController::class, 'register'])->name('register'); //Procesar Registro
@@ -24,6 +25,11 @@ Route::get('/', function () {
     return view('InicioViews.inicio');
 })->name('inicio');
 
+Route::post('/donar', [DonacionController::class, 'store'])->name('donations.store');
+Route::get('/', function () {
+    $categories = ['Alimentos', 'Medicamentos', 'Accesorios'];
+    return view('InicioViews.inicio', compact('categories'));
+})->name('inicio');
 /* Route::get('/', function () {
     return view('welcome');
 }); */
