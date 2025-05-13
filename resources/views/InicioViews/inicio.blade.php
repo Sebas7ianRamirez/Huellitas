@@ -33,7 +33,7 @@
         </div>
         <div class="texto-derecha">
             <h2 class="mensaje-principal">PEQUEÑAS ACCIONES</h2>
-            <h3 class="mensaje-secundario">GRANDES CAMBIOS PARA ELLOS.</h3>
+            <h3 class="mensaje-secundario">GRANDES CAMBIOS PARA ELLOS</h3>
             <button class="btn-donar">Hacer Donación</button>
         </div>
     </section>

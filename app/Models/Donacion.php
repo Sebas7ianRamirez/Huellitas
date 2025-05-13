@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donacion extends Model
 {
-    protected $fillable = ['nombre_donante', 'celular', 'email', 'categoria', 'cantidad', 'descripcion'];
+    protected $table = 'donaciones';
+    protected $fillable = [
+        'nombre_donante',
+        'celular',
+        'email',
+        'categoria',
+        'cantidad',
+        'descripcion'
+    ];
 }

@@ -30,6 +30,6 @@ class DonacionController extends Controller
 
         Donacion::create($request->all());
 
-        return redirect()->back()->with('success', 'Gracias por tu donación!');
+        return redirect()->back()->with('success', 'Gracias por tu donación! Nos pondremos en contacto contigo');
     }
 }
