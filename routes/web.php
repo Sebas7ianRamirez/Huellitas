@@ -20,10 +20,10 @@ Route::get('/nueva-contrasena', function () { //Mostrar actualizar contraseña
 })->name('forgot.nueva');
 Route::post('/nueva-contrasena', [AuthController::class, 'actualizarContraseña'])->name('forgot.actualizar'); //Vista actualizar
 
-Route::get('/inicio', function () {
+Route::get('/', function () {
     return view('InicioViews.inicio');
 })->name('inicio');
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
