@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('CSS/CSS Autenticacion/login.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.svg') }}">
     <script src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
+    <script src="{{ asset('JS/ScriptsLogin.js') }}"></script>
 </head>
 
 <body>

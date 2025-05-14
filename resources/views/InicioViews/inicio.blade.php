@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('CSS/CSS Estilos_Inicio/inicio.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
     <script src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
-    <script src="{{ asset('JS/ResizeTextArea.js') }}"></script>
+    <script src="{{ asset('JS/ScriptsInicio.js') }}"></script>
 </head>
 
 <body>
