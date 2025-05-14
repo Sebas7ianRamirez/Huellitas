@@ -1,15 +1,16 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Segoe UI", sans-serif;
     margin: 0;
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr;
-    background-image: url('/Imagenes/fondo.png'); /* fondo con huellitas */
+    background-image: url("/Imagenes/fondo.png"); /* fondo con huellitas */
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
@@ -18,21 +19,54 @@ body {
 /* Header */
 header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    background-color: white;
-    border-bottom: 3px solid #1e4d91;
     padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 3px solid #1e4d91;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
 }
 
 .logo {
-    height: 50px;
+    height: 40px;
     margin-right: 10px;
 }
 
 header h1 {
     color: #1e4d91;
-    font-size: 24px;
+    font-size: 22px;
     margin: 0;
+}
+
+.login-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #eff5ff;
+    color: #16396e;
+    padding: 4px 9px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    border: #16396e;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(30, 77, 145, 0.06);
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #16396e;
+    color: #fff;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
 }
 
 /* Centrar el contenido principal (formulario) */
