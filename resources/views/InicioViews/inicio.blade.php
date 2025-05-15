@@ -64,11 +64,9 @@
             <canvas id="chartTopBajo" class="grafica-ejemplo2"></canvas>
 
             <div class="mensaje-gracias">
-                <ul>
-                    <li>Alimento seco para perros y gatos</li>
-                    <li>Mantas y camas para mascotas</li>
-                    <li>Juguetes y accesorios</li>
-                </ul>
+                @foreach($topBajo as $p)
+                    <li>{{ $p->nombre }}</li>
+                @endforeach
             </div>
         </div>
     </section>

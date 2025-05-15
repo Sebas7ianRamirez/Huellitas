@@ -172,7 +172,7 @@ header h1 {
 }
 
 .grafica-ejemplo {
-    width: 100%;
+    width: auto;
     max-width: 300px;
     height: auto; /* Chart.js ajustará el alto */
     border-radius: 15px;
@@ -226,7 +226,7 @@ SECCIÓN ESTADISTICA
 }
 
 .grafica-ejemplo2 {
-    width: 100%;
+    width: auto;
     max-width: 300px;
     height: auto; /* Chart.js ajustará el alto */
     border-radius: 15px;
