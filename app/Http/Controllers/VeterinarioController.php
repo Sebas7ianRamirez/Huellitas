@@ -64,4 +64,23 @@ class VeterinarioController extends Controller
 
         return redirect()->route('Productos')->with('success', 'Producto agregado.');
     }
+
+    /* CONTROLADOR QUE PERMITE ACTUALIZAR EL STOCK */
+    public function actualizarStock(Request $request)
+    {
+        $data = $request->validate([
+            'stock_actual' => 'required|array',
+            'stock_actual.*' => 'required|integer|min:0',
+        ]);
+
+        foreach ($data['stock_actual'] as $productoId => $nuevoStock) {
+            $producto = Producto::find($productoId);
+            if ($producto) {
+                $producto->stock_actual = $nuevoStock;
+                $producto->save();
+            }
+        }
+
+        return redirect()->back()->with('success', 'Stock actualizado correctamente.');
+    }
 }

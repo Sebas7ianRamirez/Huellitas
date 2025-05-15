@@ -176,6 +176,43 @@ header h1 {
     color: white;
 }
 
+input[type="number"].stock-input {
+    width: 70px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1.5px solid #a3c1ff;
+    border-radius: 6px;
+    background-color: #eff5ff;
+    color: #1a1a1a;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+input[type="number"].stock-input:focus {
+    border-color: #5a9cff;
+    box-shadow: 0 0 6px rgba(90, 156, 255, 0.5);
+    background-color: #e3ecff;
+}
+
+.btn-Actualizar {
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: #ff6c11; /* Azul un poco más claro que #0d47a1 */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(21, 101, 192, 0.4);
+}
+
+.btn-Actualizar:hover {
+    background-color: #1e4d91; /* Azul más brillante para hover */
+    box-shadow: 0 6px 10px rgba(30, 136, 229, 0.6);
+}
+
 /* ============================
     Responsive: columnas lado a lado en pantallas grandes
    ============================ */

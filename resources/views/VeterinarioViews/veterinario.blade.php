@@ -42,31 +42,40 @@
         <!-- Contenido principal -->
         <main class="main-content">
             <!-- Gráfica placeholder -->
-            <div class="graph-placeholder">
+            {{-- <div class="graph-placeholder">
                 <img src="{{ asset('Imagenes/Estadistica ejemplo.jpg') }}" alt="Gráfico de inventario"
                     style="max-width: 100%;">
                 <p>Gráfico de niveles de inventario</p>
-            </div>
+            </div> --}}
             <div class="inventario-container">
                 <h2 class="section-title">Inventario Actual</h2>
-                <table class="inventory-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Categoría</th>
-                            <th>Stock Actual</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($productos as $producto)
+                <form id="stock-update-form" method="POST" action="{{ route('productos.actualizarStock') }}">
+                    @csrf
+                    <table class="inventory-table">
+                        <thead>
                             <tr>
-                                <td>{{ $producto->nombre }}</td>
-                                <td>{{ $producto->categoria }}</td>
-                                <td>{{ $producto->stock_actual }} {{ $producto->unidad_medida }}</td>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Stock Actual</th>
+                                <th>Modificar Stock</th> <!-- Nueva columna -->
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($productos as $producto)
+                                <tr>
+                                    <td>{{ $producto->nombre }}</td>
+                                    <td>{{ $producto->categoria }}</td>
+                                    <td>{{ $producto->stock_actual }} {{ $producto->unidad_medida }}</td>
+                                    <td>
+                                        <input type="number" name="stock_actual[{{ $producto->id }}]"
+                                            value="{{ $producto->stock_actual }}" min="0" class="stock-input">
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn-Actualizar">Actualizar Stock</button>
+                </form>
             </div>
 
             <div class="donaciones-container">

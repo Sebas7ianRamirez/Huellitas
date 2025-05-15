@@ -32,6 +32,7 @@ Route::get('/', function () {
 
 // Ruta principal para el panel veterinario
 Route::get('/veterinario', [VeterinarioController::class, 'index'])->name('veterinario.index');
+Route::post('/productos/actualizar-stock', [VeterinarioController::class, 'actualizarStock'])->name('productos.actualizarStock');
 
 Route::get('/inventario', [VeterinarioController::class, 'inventario'])->name('inventario');
 Route::post('/inventario/toggle/{id}', [VeterinarioController::class, 'toggleActivo']);
