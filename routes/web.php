@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DonacionController; //Controlador de Donaciones
+use App\Http\Controllers\VeterinarioController;
 
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form'); //Mostrar Registro
 Route::post('/register', [AuthController::class, 'register'])->name('register'); //Procesar Registro
@@ -33,3 +34,11 @@ Route::get('/', function () {
 /* Route::get('/', function () {
     return view('welcome');
 }); */
+
+// Ruta principal para el panel veterinario
+Route::get('/veterinario', [VeterinarioController::class, 'index'])->name('veterinario.index');
+
+// Rutas adicionales del menú lateral (puedes implementarlas después)
+Route::get('/inventario', [VeterinarioController::class, 'index'])->name('inventario');
+Route::get('/productos', [VeterinarioController::class, 'index'])->name('Productos');
+Route::get('/estadisticas', [VeterinarioController::class, 'index'])->name('estadisticas');
