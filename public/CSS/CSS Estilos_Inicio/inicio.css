@@ -225,6 +225,10 @@ SECCIÓN ESTADISTICA
     margin: 0;
 }
 
+.mensaje-gracias {
+    font-weight: bold;
+}
+
 .grafica-ejemplo2 {
     width: auto;
     max-width: 300px;
