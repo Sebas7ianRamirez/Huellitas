@@ -22,9 +22,6 @@ Route::get('/nueva-contrasena', function () { //Mostrar actualizar contraseña
 })->name('forgot.nueva');
 Route::post('/nueva-contrasena', [AuthController::class, 'actualizarContraseña'])->name('forgot.actualizar'); //Vista actualizar
 
-Route::get('/', function () {
-    return view('InicioViews.inicio');
-})->name('inicio');
 
 Route::post('/donar', [DonacionController::class, 'store'])->name('donations.store');
 Route::get('/', function () {

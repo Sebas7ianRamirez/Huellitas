@@ -35,7 +35,9 @@
         <div class="texto-derecha">
             <h2 class="mensaje-principal">PEQUEÑAS ACCIONES</h2>
             <h3 class="mensaje-secundario">GRANDES CAMBIOS PARA ELLOS</h3>
-            <button class="btn-donar">Hacer Donación</button>
+            <button class="btn-donar" onclick="document.getElementById('form-donacion').scrollIntoView({ behavior: 'smooth' });">
+                Hacer Donación
+            </button>
         </div>
     </section>
     <section class="seccion-grafica">
@@ -66,7 +68,7 @@
             </div>
         </div>
     </section>
-    <section class="form-container">
+    <section class="form-container" id="form-donacion">
         <h2>Hacer una Donación</h2>
 
         @if (session('success'))
