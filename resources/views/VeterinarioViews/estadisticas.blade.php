@@ -8,6 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
     <script src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ asset('JS/estadisticas.js') }}"></script>
 </head>
 
 <body>
@@ -62,7 +63,6 @@
     </div>
 
     <script>
-        // Datos que vienen del controlador
         const topAltoLabels = @json($topAlto->pluck('nombre'));
         const topAltoData = @json($topAlto->pluck('stock_actual'));
 
@@ -72,50 +72,12 @@
         const catLabels = @json($porCategoria->pluck('categoria'));
         const catData = @json($porCategoria->pluck('total'));
 
-        // Chart: Top Alto
-        new Chart(document.getElementById('chartTopAlto'), {
-            type: 'bar',
-            data: {
-                labels: topAltoLabels,
-                datasets: [{
-                    label: 'Stock Actual',
-                    data: topAltoData
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
-
-        // Chart: Top Bajo
-        new Chart(document.getElementById('chartTopBajo'), {
-            type: 'bar',
-            data: {
-                labels: topBajoLabels,
-                datasets: [{
-                    label: 'Stock Actual',
-                    data: topBajoData
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
-
-        // Chart: Categorías
-        new Chart(document.getElementById('chartCategorias'), {
-            type: 'bar',
-            data: {
-                labels: catLabels,
-                datasets: [{
-                    label: 'Total Productos',
-                    data: catData
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
+        // Inicializa todos los charts
+        initStatisticsCharts(
+            topAltoLabels, topAltoData,
+            topBajoLabels, topBajoData,
+            catLabels, catData
+        );
     </script>
 
 </body>
