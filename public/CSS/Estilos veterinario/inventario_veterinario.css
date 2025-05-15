@@ -1,15 +1,17 @@
 /* ============================
     Reset y estilos base
    ============================ */
+
+html,
+body {
+    height: 100%;
+}
 body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
     color: #000; /* Color base para texto */
 }
 
-/* ============================
-    Header
-   ============================ */
 header {
     display: flex;
     justify-content: space-between;
@@ -67,7 +69,7 @@ header h1 {
    ============================ */
 .main-container {
     display: flex;
-    min-height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px); /* Resta la altura del header */
 }
 
 /* ============================
@@ -108,86 +110,95 @@ header h1 {
     Contenido principal
    ============================ */
 .main-content {
+    flex-grow: 1;
     padding: 20px;
     background-image: url("/Imagenes/fondo.png");
     background-repeat: repeat;
     background-size: cover;
     background-position: center;
 }
-/* ============================
-    Gráfica placeholder
-   ============================ */
-/* Posicionamos el placeholder arriba a la izquierda */
-.graph-placeholder {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+/* TÍTULO */
+.main-content h1 {
     text-align: center;
-    max-width: 20%;
-    z-index: 10; /* para que quede encima de otros elementos si es necesario */
-}
-/* ============================
-    Secciones inventario y donaciones
-   ============================ */
-.inventario-container,
-.donaciones-container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    background: #f26522;
+    padding: 15px 30px;
+    display: inline-block;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
 }
 
-.donaciones-container {
-    background: #ffd114;
+/* FILTRO */
+.filtro {
+    margin-bottom: 20px;
+    text-align: right;
 }
 
-.inventario-container {
-    background: #ffd114;
-}
-/* ============================
-    Títulos de sección
-   ============================ */
-.section-title {
-    color: #1e4d91;
-    border-bottom: 2px solid #1e4d91;
-    padding-bottom: 10px;
-    margin-top: 0;
+.filtro select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
 }
 
-/* ============================
-    Tablas de inventario y donaciones
-   ============================ */
-.inventory-table {
+/* TABLA */
+.tabla-inventario {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0 0 0;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.inventory-table th,
-.inventory-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-
-.inventory-table th {
-    background-color: #ff6c11;
+.tabla-inventario thead {
+    background-color: #1565c0;
     color: white;
 }
 
-/* ============================
-    Responsive: columnas lado a lado en pantallas grandes
-   ============================ */
-@media (min-width: 900px) {
-    .main-content {
-        display: flex;
-        gap: 30px;
-    }
+.tabla-inventario th,
+.tabla-inventario td {
+    padding: 12px 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
 
-    .inventario-container,
-    .donaciones-container {
-        flex: 1; /* Cada uno ocupa mitad del ancho */
-        margin-bottom: 0; /* Sin margen inferior para evitar espacios extra */
-    }
+.tabla-inventario tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* ESTADO Y STOCK */
+.stock-bajo {
+    background-color: #ffebee;
+    color: #c62828;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.estado.activo {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.estado.inactivo {
+    color: #c62828;
+    font-weight: bold;
+}
+
+/* BOTONES */
+button {
+    background-color: #1565c0;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0d47a1;
 }

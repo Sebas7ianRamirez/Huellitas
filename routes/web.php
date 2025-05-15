@@ -28,14 +28,14 @@ Route::get('/', function () {
     $categories = ['Alimentacion', 'Medicamentos', 'Aseo'];
     return view('InicioViews.inicio', compact('categories'));
 })->name('inicio');
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
+
 
 // Ruta principal para el panel veterinario
 Route::get('/veterinario', [VeterinarioController::class, 'index'])->name('veterinario.index');
 
 // Rutas adicionales del menú lateral (puedes implementarlas después)
-Route::get('/inventario', [VeterinarioController::class, 'index'])->name('inventario');
 Route::get('/productos', [VeterinarioController::class, 'index'])->name('Productos');
 Route::get('/estadisticas', [VeterinarioController::class, 'index'])->name('estadisticas');
+
+Route::get('/inventario', [VeterinarioController::class, 'inventario'])->name('inventario');
+Route::post('/inventario/toggle/{id}', [VeterinarioController::class, 'toggleActivo']);
