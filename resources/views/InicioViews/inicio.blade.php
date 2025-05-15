@@ -8,6 +8,10 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
     <script src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
     <script src="{{ asset('JS/ScriptsInicio.js') }}"></script>
+    {{-- Chart.js --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {{-- Tu script con initStatisticsCharts --}}
+    <script src="{{ asset('JS/estadisticas.js') }}"></script>
 </head>
 
 <body>
@@ -35,30 +39,30 @@
         <div class="texto-derecha">
             <h2 class="mensaje-principal">PEQUEÑAS ACCIONES</h2>
             <h3 class="mensaje-secundario">GRANDES CAMBIOS PARA ELLOS</h3>
-            <button class="btn-donar" onclick="document.getElementById('form-donacion').scrollIntoView({ behavior: 'smooth' });">
+            <button class="btn-donar"
+                onclick="document.getElementById('form-donacion').scrollIntoView({ behavior: 'smooth' });">
                 Hacer Donación
             </button>
         </div>
     </section>
+    <!-- sección gráfica: top 3 más stock -->
     <section class="seccion-grafica">
         <h2 class="titulo-gracias">GRACIAS POR TU GENEROSIDAD</h2>
         <div class="contenido-grafica">
             <div class="mensaje-gracias">
-                <p>
-                    <strong>¡Sin tu ayuda no sería posible todo esto!</strong>
-                </p>
+                <p><strong>¡Sin tu ayuda no sería posible todo esto!</strong></p>
             </div>
-            <!-- Imagen de ejemplo para simular la gráfica -->
-            <img src="{{ asset('Imagenes/Estadistica ejemplo.jpg') }}" alt="Ejemplo de gráfica de donaciones"
-                class="grafica-ejemplo" width="300" height="300">
+            {{-- Aquí va el canvas, no la imagen de ejemplo --}}
+            <canvas id="chartTopAlto" class="grafica-ejemplo"></canvas>
         </div>
     </section>
+    <!-- sección estadística: top 3 menos stock -->
     <section class="seccion-estadistica">
         <h2 class="Titulo-pregunta">¿QUÉ ESTAMOS NECESITANDO?</h2>
         <div class="contenido-pregunta">
-            <!-- Imagen de ejemplo para simular la gráfica -->
-            <img src="{{ asset('Imagenes/Estadistica ejemplo.jpg') }}" alt="Ejemplo de gráfica de donaciones"
-                class="grafica-ejemplo2" width="300" height="300">
+            {{-- Canvas para el top 3 menos stock --}}
+            <canvas id="chartTopBajo" class="grafica-ejemplo2"></canvas>
+
             <div class="mensaje-gracias">
                 <ul>
                     <li>Alimento seco para perros y gatos</li>
@@ -127,5 +131,21 @@
         </form>
     </section>
 </body>
+
+{{-- Datos y llamada a la función --}}
+<script>
+    const topAltoLabels = @json($topAlto->pluck('nombre'));
+    const topAltoData = @json($topAlto->pluck('stock_actual'));
+
+    const topBajoLabels = @json($topBajo->pluck('nombre'));
+    const topBajoData = @json($topBajo->pluck('stock_actual'));
+
+    // Inicializa SOLO los dos charts que usas aquí.
+    initStatisticsCharts(
+        topAltoLabels, topAltoData,
+        topBajoLabels, topBajoData,
+        [], [] // Como no necesitas el 3º pie aquí, pásales arrays vacíos
+    );
+</script>
 
 </html>

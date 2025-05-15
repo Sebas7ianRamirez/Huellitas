@@ -24,10 +24,8 @@ Route::post('/nueva-contrasena', [AuthController::class, 'actualizarContraseña'
 
 
 Route::post('/donar', [DonacionController::class, 'store'])->name('donations.store');
-Route::get('/', function () {
-    $categories = ['Alimentacion', 'Medicamentos', 'Aseo'];
-    return view('InicioViews.inicio', compact('categories'));
-})->name('inicio');
+Route::get('/', [DonacionController::class, 'inicio'])->name('inicio');
+
 
 
 // Ruta principal para el panel veterinario

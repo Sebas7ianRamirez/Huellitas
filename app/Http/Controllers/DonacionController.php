@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donacion;
+use App\Models\Producto;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -31,5 +32,19 @@ class DonacionController extends Controller
         Donacion::create($request->all());
 
         return redirect()->back()->with('success', 'Gracias por tu donación! Nos pondremos en contacto contigo');
+    }
+
+    /** Mostrar página de inicio con gráficas y formulario de donación */
+    public function inicio()
+    {
+        $categories = ['Alimentacion', 'Medicamentos', 'Aseo'];
+
+        $topAlto = Producto::orderBy('stock_actual','desc')
+            ->take(3)->get(['nombre','stock_actual']);
+
+        $topBajo = Producto::orderBy('stock_actual','asc')
+            ->take(3)->get(['nombre','stock_actual']);
+
+        return view('InicioViews.inicio', compact('categories','topAlto','topBajo'));
     }
 }
