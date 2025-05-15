@@ -131,7 +131,7 @@ header h1 {
 /* Productos Donados - contenedor */
 .productos-donados {
     flex: 1 1 55%;
-    background-color: #ffd114;
+    background-color: #ff611c;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -141,12 +141,15 @@ header h1 {
 /* Título sección */
 .productos-donados h2,
 .form-alta h2 {
-    color: #ff6c11;
+    color: #ffffff;
+    background-color: #ffd114;
     font-weight: 700;
     margin-bottom: 15px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+    border: none;
+    border-radius: 10px;
 }
 
 /* Tabla productos */
@@ -159,7 +162,7 @@ header h1 {
 }
 
 .productos-donados thead {
-    background-color: #ff6c11;
+    /* background-color: #eff5ff; */
     color: white;
 }
 
@@ -169,6 +172,7 @@ header h1 {
     text-align: center;
     border-bottom: 1px solid #ddd;
     font-size: 15px;
+    color: white;
 }
 
 .productos-donados tbody tr:hover {
@@ -179,7 +183,7 @@ header h1 {
 /* Formulario de alta */
 .form-alta {
     flex: 1 1 40%;
-    background-color: #eff5ff;
+    background-color: #ff611c;
     border-radius: 12px;
     padding: 25px 30px;
     box-shadow: 0 4px 12px rgba(30, 77, 145, 0.15);
@@ -213,13 +217,14 @@ header h1 {
     resize: vertical;
     display: block;
     box-sizing: border-box;
+    background-color: #eff5ff;
 }
 
 .form-alta .btn-agregar {
     margin-top: 15px;
     cursor: pointer;
     font-weight: 700;
-    background-color: #ff6c11;
+    background-color: #0d47a1;
     color: white;
     border: none;
     border-radius: 10px;
@@ -228,14 +233,14 @@ header h1 {
 }
 
 .form-alta .btn-agregar:hover {
-    background-color: #0d47a1;
+    background-color: #3a63a1;
 }
 
 .form-alta label {
     width: 80%;
-    margin: 0 auto 6px auto;
+    margin: 0 auto auto;
     font-weight: 600;
-    color: #16396e;
+    color: white;
     display: block;
     text-align: left;
 }
