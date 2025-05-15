@@ -31,7 +31,9 @@
     <div class="main-container">
         <!-- Menú lateral -->
         <nav class="sidebar">
-            <img src="{{ asset('Imagenes/perrito-blanco.svg') }}" alt="Perrito" class="perrito-img">
+            <a href="{{ route('veterinario.index') }}">
+                <img src="{{ asset('Imagenes/perrito-blanco.svg') }}" alt="Perrito" class="perrito-img">
+            </a>
             <ul class="sidebar-menu">
                 <li><a href="{{ route('inventario') }}">Inventario</a></li>
                 <li><a href="{{ route('Productos') }}">Productos</a></li>
