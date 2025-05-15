@@ -38,8 +38,4 @@ Route::get('/inventario', [VeterinarioController::class, 'inventario'])->name('i
 Route::post('/inventario/toggle/{id}', [VeterinarioController::class, 'toggleActivo']);
 Route::get('/productos', [VeterinarioController::class, 'productos'])->name('Productos');
 Route::post('/productos', [VeterinarioController::class, 'storeProducto'])->name('Productos.store');
-
-// Rutas adicionales del menú lateral (puedes implementarlas después)
-Route::get('/estadisticas', [VeterinarioController::class, 'index'])->name('estadisticas');
-
-
+Route::get('/estadisticas', [VeterinarioController::class, 'estadisticas'])->name('estadisticas');

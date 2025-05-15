@@ -83,4 +83,28 @@ class VeterinarioController extends Controller
 
         return redirect()->back()->with('success', 'Stock actualizado correctamente.');
     }
+
+    /* CONTROLADOR ENCARGADO DEL APARTADO DE ESTADISTICAS */
+
+    public function estadisticas()
+    {
+        // Top 3 con más stock
+        $topAlto = Producto::orderBy('stock_actual', 'desc')
+            ->take(3)
+            ->get(['nombre', 'stock_actual']);
+
+        // Top 3 con menos stock
+        $topBajo = Producto::orderBy('stock_actual', 'asc')
+            ->take(3)
+            ->get(['nombre', 'stock_actual']);
+
+        // Conteo por categoría
+        $porCategoria = Producto::selectRaw('categoria, COUNT(*) as total')->groupBy('categoria')->orderByDesc('total')->get();
+
+        return view('VeterinarioViews.estadisticas', [
+            'topAlto' => $topAlto,
+            'topBajo' => $topBajo,
+            'porCategoria' => $porCategoria,
+        ]);
+    }
 }
