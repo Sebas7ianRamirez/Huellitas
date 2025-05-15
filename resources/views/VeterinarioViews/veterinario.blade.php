@@ -47,7 +47,6 @@
                     style="max-width: 100%;">
                 <p>Gráfico de niveles de inventario</p>
             </div>
-
             <div class="inventario-container">
                 <h2 class="section-title">Inventario Actual</h2>
                 <table class="inventory-table">
