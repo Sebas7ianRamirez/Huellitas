@@ -12,7 +12,7 @@ class DonacionController extends Controller
     // Mostrar formulario de donación
     public function create()
     {
-        $categories = ['Alimentos', 'Medicamentos', 'Accesorios'];
+        $categories = ['Alimentacion', 'Medicamentos', 'Aseo'];
         return view('donations.create', compact('categories'));
     }
 
@@ -23,7 +23,7 @@ class DonacionController extends Controller
             'nombre_donante' => 'required|string|max:255',
             'celular' => 'required|string|max:20',
             'email' => 'required|email|max:255',
-            'categoria' => 'required|in:Alimentos,Medicamentos,Accesorios',
+            'categoria' => 'required|in:Alimentacion,Medicamentos,Aseo',
             'cantidad' => 'required|integer|min:1',
             'descripcion' => 'nullable|string',
         ]);

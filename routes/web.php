@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Route::post('/donar', [DonacionController::class, 'store'])->name('donations.store');
 Route::get('/', function () {
-    $categories = ['Alimentos', 'Medicamentos', 'Accesorios'];
+    $categories = ['Alimentacion', 'Medicamentos', 'Aseo'];
     return view('InicioViews.inicio', compact('categories'));
 })->name('inicio');
 /* Route::get('/', function () {
