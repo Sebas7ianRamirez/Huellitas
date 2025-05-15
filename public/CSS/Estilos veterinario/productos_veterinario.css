@@ -111,9 +111,143 @@ header h1 {
       ============================ */
 .main-content {
     flex-grow: 1;
+    margin: 0;
     padding: 20px;
     background-image: url("/Imagenes/fondo.png");
     background-repeat: repeat;
     background-size: cover;
     background-position: center;
+}
+
+/* MAIN CONTENT */
+/* Contenedor columnas: lado a lado con espacio */
+.columnas {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+}
+
+/* Productos Donados - contenedor */
+.productos-donados {
+    flex: 1 1 55%;
+    background-color: #ffd114;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 320px;
+}
+
+/* Título sección */
+.productos-donados h2,
+.form-alta h2 {
+    color: #ff6c11;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Tabla productos */
+.productos-donados table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.productos-donados thead {
+    background-color: #ff6c11;
+    color: white;
+}
+
+.productos-donados th,
+.productos-donados td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+}
+
+.productos-donados tbody tr:hover {
+    background-color: #ff9b5c;
+    cursor: default;
+}
+
+/* Formulario de alta */
+.form-alta {
+    flex: 1 1 40%;
+    background-color: #eff5ff;
+    border-radius: 12px;
+    padding: 25px 30px;
+    box-shadow: 0 4px 12px rgba(30, 77, 145, 0.15);
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-alta form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-alta input[type="text"],
+.form-alta input[type="number"],
+.form-alta select,
+.form-alta textarea,
+.form-alta .btn-agregar {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 8px auto;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: "Segoe UI", sans-serif;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+    display: block;
+    box-sizing: border-box;
+}
+
+.form-alta .btn-agregar {
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: #ff6c11;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.form-alta .btn-agregar:hover {
+    background-color: #0d47a1;
+}
+
+.form-alta label {
+    width: 80%;
+    margin: 0 auto 6px auto;
+    font-weight: 600;
+    color: #16396e;
+    display: block;
+    text-align: left;
+}
+
+/* Responsive: columnas apiladas en pantallas pequeñas */
+@media (max-width: 900px) {
+    .columnas {
+        flex-direction: column;
+        gap: 25px;
+    }
+    .productos-donados,
+    .form-alta {
+        flex: 1 1 100%;
+    }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Inventario - Huellitas Esperanzadoras</title>
-    <link rel="stylesheet" href="{{ asset('CSS/Estilos veterinario/inventario_veterinario.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/Estilos veterinario/productos_veterinario.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
     <script src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -39,7 +39,85 @@
             </ul>
         </nav>
         <main class="main-content">
-            
+            <div class="columnas">
+                <!-- IZQUIERDA: Tabla de Productos Donados -->
+                <div class="productos-donados">
+                    <h2>PRODUCTOS DONADOS</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Stock Actual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($productos as $p)
+                                <tr>
+                                    <td>{{ $p->nombre }}</td>
+                                    <td>{{ $p->categoria }}</td>
+                                    <td>{{ $p->stock_actual }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- DERECHA: Formulario de Alta -->
+                <div class="form-alta">
+                    <h2>AGREGAR PRODUCTO DE DONACIÓN</h2>
+                    @if (session('success'))
+                        <div class="alert-success">{{ session('success') }}</div>
+                    @endif
+
+                    <form action="{{ route('Productos.store') }}" method="POST">
+                        @csrf
+
+                        <input type="text" name="nombre" placeholder="Nombre" value="{{ old('nombre') }}">
+                        @error('nombre')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
+
+                        <label>Categoría:</label>
+                        <select name="categoria">
+                            <option value="">-- Seleccione --</option>
+                            @foreach ($categorias as $cat)
+                                <option value="{{ $cat }}" {{ old('categoria') == $cat ? 'selected' : '' }}>
+                                    {{ $cat }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('categoria')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
+
+                        <input type="text" name="unidad_medida" placeholder="Unidad de Medida"
+                            value="{{ old('unidad_medida') }}">
+                        @error('unidad_medida')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
+
+                        <input type="number" name="stock_actual" placeholder="Stock Actual"
+                            value="{{ old('stock_actual') }}">
+                        @error('stock_actual')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
+
+                        <input type="number" name="stock_minimo" placeholder="Stock Mínimo"
+                            value="{{ old('stock_minimo') }}">
+                        @error('stock_minimo')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
+
+                        <textarea name="descripcion" placeholder="Descripción">{{ old('descripcion') }}</textarea>
+                        @error('descripcion')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
+
+                        <button type="submit" class="btn-agregar">Agregar Producto</button>
+                    </form>
+                </div>
+            </div>
         </main>
     </div>
 </body>
