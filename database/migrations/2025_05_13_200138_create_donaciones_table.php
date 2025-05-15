@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre_donante');
             $table->string('celular'); // celular
             $table->string('email');
-            $table->enum('categoria', ['Alimentos', 'Medicamentos', 'Accesorios']);
+            $table->enum('categoria', ['Alimentacion', 'Medicamentos', 'Aseo']);
             $table->integer('cantidad')->unsigned();
             $table->text('descripcion')->nullable();
             $table->timestamps();
