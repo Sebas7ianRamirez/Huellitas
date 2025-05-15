@@ -43,12 +43,6 @@
 
         <!-- Contenido principal -->
         <main class="main-content">
-            <!-- Gráfica placeholder -->
-            {{-- <div class="graph-placeholder">
-                <img src="{{ asset('Imagenes/Estadistica ejemplo.jpg') }}" alt="Gráfico de inventario"
-                    style="max-width: 100%;">
-                <p>Gráfico de niveles de inventario</p>
-            </div> --}}
             <div class="inventario-container">
                 <h2 class="section-title">Inventario Actual</h2>
                 <form id="stock-update-form" method="POST" action="{{ route('productos.actualizarStock') }}">
