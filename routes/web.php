@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DonacionController; //Controlador de Donaciones
 use App\Http\Controllers\VeterinarioController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form'); //Mostrar Registro
 Route::post('/register', [AuthController::class, 'register'])->name('register'); //Procesar Registro
@@ -26,9 +27,9 @@ Route::get('/', [DonacionController::class, 'inicio'])->name('inicio');
 Route::patch('/donaciones/{donacion}/atendida', [DonacionController::class, 'marcarAtendida'])->name('donaciones.atendida');
 
 // Ruta principal para el panel veterinario
-Route::get('/veterinario', [VeterinarioController::class, 'index'])
-    ->name('veterinario.index');
-    // ->middleware('auth', 'role:veterinario');
+Route::get('/veterinario', [VeterinarioController::class, 'index'])->name('veterinario.index');
+// ->middleware('auth', 'role:veterinario');
+
 Route::post('/productos/actualizar-stock', [VeterinarioController::class, 'actualizarStock'])->name('productos.actualizarStock');
 
 Route::get('/inventario', [VeterinarioController::class, 'inventario'])->name('inventario');
@@ -36,3 +37,12 @@ Route::post('/inventario/toggle/{id}', [VeterinarioController::class, 'toggleAct
 Route::get('/productos', [VeterinarioController::class, 'productos'])->name('Productos');
 Route::post('/productos', [VeterinarioController::class, 'storeProducto'])->name('Productos.store');
 Route::get('/estadisticas', [VeterinarioController::class, 'estadisticas'])->name('estadisticas');
+
+// Dashboard de Admin
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+
+// AJAX para marcar donación atendida
+Route::patch('/donaciones/{donacion}/atendida', [AdminController::class, 'marcarAtendida'])->name('donaciones.atendida');
+
+// Form para actualizar stock (POST o PATCH según prefieras)
+Route::post('/admin/productos/actualizar-stock', [AdminController::class, 'actualizarStock'])->name('admin.productos.actualizarStock');

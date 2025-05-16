@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Panel Veterinario - Huellitas Esperanzadoras</title>
-    <link rel="stylesheet" href="{{ asset('CSS/Estilos veterinario/veterinario.css') }}">
+    <title>Panel Admin - Huellitas Esperanzadoras</title>
+    <link rel="stylesheet" href="{{ asset('CSS/Estilos_Admin/Admin.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
     <script src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -39,6 +39,7 @@
                 <li><a href="{{ route('inventario') }}">Inventario</a></li>
                 <li><a href="{{ route('Productos') }}">Productos</a></li>
                 <li><a href="{{ route('estadisticas') }}">Estadisticas</a></li>
+                <li><a href="{{ route('register') }}">Registrar Usuario</a></li>
             </ul>
         </nav>
 
