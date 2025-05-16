@@ -25,7 +25,7 @@ Route::post('/nueva-contrasena', [AuthController::class, 'actualizarContraseña'
 
 Route::post('/donar', [DonacionController::class, 'store'])->name('donations.store');
 Route::get('/', [DonacionController::class, 'inicio'])->name('inicio');
-
+Route::patch('/donaciones/{donacion}/atendida', [DonacionController::class, 'marcarAtendida'])->name('donaciones.atendida');
 
 
 // Ruta principal para el panel veterinario

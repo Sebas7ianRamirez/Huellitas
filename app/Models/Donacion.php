@@ -13,6 +13,7 @@ class Donacion extends Model
         'email',
         'categoria',
         'cantidad',
-        'descripcion'
+        'descripcion',
+        'estado',
     ];
 }

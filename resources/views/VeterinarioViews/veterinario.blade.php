@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('CSS/Estilos veterinario/veterinario.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('Imagenes/Huella.png') }}">
     <script src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -83,10 +84,11 @@
                             <th>Contacto</th>
                             <th>Categoría</th>
                             <th>Cantidad</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($donaciones as $donacion)
+                        @foreach ($donaciones->where('estado', 'sin atender') as $donacion)
                             <tr>
                                 <td>{{ $donacion->nombre_donante }}</td>
                                 <td>
@@ -95,6 +97,9 @@
                                 </td>
                                 <td>{{ $donacion->categoria }}</td>
                                 <td>{{ $donacion->cantidad }}</td>
+                                <td>
+                                    <button class="btn-atendida" data-id="{{ $donacion->id }}">Atendida</button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -103,5 +108,34 @@
         </main>
     </div>
 </body>
+<script>
+    $(document).ready(function() {
+        $('.btn-atendida').click(function() {
+            const button = $(this);
+            const donacionId = button.data('id');
+
+            if(confirm('¿Marcar esta donación como atendida?')) {
+                $.ajax({
+                    url: `/donaciones/${donacionId}/atendida`,
+                    type: 'PATCH',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if(response.success) {
+                            // Eliminar fila de la tabla
+                            button.closest('tr').remove();
+                        } else {
+                            alert('Error al actualizar el estado.');
+                        }
+                    },
+                    error: function() {
+                        alert('Error en la petición.');
+                    }
+                });
+            }
+        });
+    });
+</script>
 
 </html>

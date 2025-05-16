@@ -11,7 +11,7 @@ class VeterinarioController extends Controller
     public function index()
     {
         $productos = Producto::where('activo', true)->get();
-        $donaciones = Donacion::orderBy('created_at', 'desc')->take(10)->get();
+        $donaciones = Donacion::where('estado', 'sin atender')->orderBy('created_at', 'desc')->get();
 
         return view('VeterinarioViews.veterinario', compact('productos', 'donaciones'));
     }

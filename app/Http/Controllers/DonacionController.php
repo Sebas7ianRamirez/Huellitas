@@ -39,12 +39,24 @@ class DonacionController extends Controller
     {
         $categories = ['Alimentacion', 'Medicamentos', 'Aseo'];
 
-        $topAlto = Producto::orderBy('stock_actual','desc')
-            ->take(3)->get(['nombre','stock_actual']);
+        $topAlto = Producto::orderBy('stock_actual', 'desc')
+            ->take(3)
+            ->get(['nombre', 'stock_actual']);
 
-        $topBajo = Producto::orderBy('stock_actual','asc')
-            ->take(3)->get(['nombre','stock_actual']);
+        $topBajo = Producto::orderBy('stock_actual', 'asc')
+            ->take(3)
+            ->get(['nombre', 'stock_actual']);
 
-        return view('InicioViews.inicio', compact('categories','topAlto','topBajo'));
+        return view('InicioViews.inicio', compact('categories', 'topAlto', 'topBajo'));
+    }
+
+    /* CONTROLA EL ESTADO DE LAS DONACIONES */
+
+    public function marcarAtendida(Donacion $donacion)
+    {
+        $donacion->estado = 'atendida';
+        $donacion->save();
+
+        return response()->json(['success' => true]);
     }
 }
