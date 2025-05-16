@@ -16,11 +16,17 @@
         <h2>Registro de Usuario</h2>
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <input type="text" name="name" placeholder="Nombre" required><br>
-            <input type="email" name="email" placeholder="Correo" required><br>
-            <input type="password" name="password" placeholder="Contraseña" required><br>
 
-            <label>Selecciona una pregunta secreta:</label><br>
+            <input type="text" name="name" placeholder="Nombre" value="{{ old('name') }}" required>
+            @error('name') <div class="error">{{ $message }}</div> @enderror
+
+            <input type="email" name="email" placeholder="Correo" value="{{ old('email') }}" required>
+            @error('email') <div class="error">{{ $message }}</div> @enderror
+
+            <input type="password" name="password" placeholder="Contraseña" required>
+            @error('password') <div class="error">{{ $message }}</div> @enderror
+
+            <label>Selecciona una pregunta secreta:</label>
             <select name="security_question" required>
                 <option value="">-- Selecciona una pregunta --</option>
                 <option value="¿Cuál es tu color favorito?">¿Cuál es tu color favorito?</option>
@@ -28,8 +34,20 @@
                 <option value="¿Cuál es tu comida favorita?">¿Cuál es tu comida favorita?</option>
                 <option value="¿En qué ciudad naciste?">¿En qué ciudad naciste?</option>
                 <option value="¿Nombre de tu mejor amigo de infancia?">¿Nombre de tu mejor amigo de infancia?</option>
-            </select><br>
-            <input type="text" name="security_answer" placeholder="Respuesta secreta" required><br>
+            </select>
+            @error('security_question') <div class="error">{{ $message }}</div> @enderror
+
+            <input type="text" name="security_answer" placeholder="Respuesta secreta" value="{{ old('security_answer') }}" required>
+            @error('security_answer') <div class="error">{{ $message }}</div> @enderror
+
+            <!-- Nuevo campo de rol: solo acceso administrador -->
+            <label class="label-rol">Rol de usuario:</label>
+            <select name="role" required>
+                <option value="">-- Selecciona un rol --</option>
+                <option value="veterinario" {{ old('role')=='veterinario'?'selected':'' }}>Veterinario</option>
+                <option value="admin"        {{ old('role')=='admin'?'selected':'' }}>Administrador</option>
+            </select>
+            @error('role') <div class="error">{{ $message }}</div> @enderror
 
             <button type="submit">Registrarse</button>
         </form>

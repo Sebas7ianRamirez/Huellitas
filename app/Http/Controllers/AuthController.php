@@ -6,22 +6,26 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     /*-------------------------------REGISTRARSE-------------------------------------*/
-    
-    public function showRegister() {
+
+    public function showRegister()
+    {
         return view('LogRegRecViews.register');
     }
 
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'security_question' => 'required',
             'security_answer' => 'required|string',
+            'role' => 'required|in:veterinario,admin',
         ]);
 
         User::create([
@@ -30,69 +34,79 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'security_question' => $request->security_question,
             'security_answer' => $request->security_answer,
+            'role' => $request->role,
         ]);
 
         return redirect('/login')->with('success', 'Registro exitoso. Ahora puedes iniciar sesión.');
-    }    // CONTROLADOR ENCARGADO DEL REGISTRO
+    } // CONTROLADOR ENCARGADO DEL REGISTRO
 
-    /*-------------------------INICIAR SESION-------------------------------------------*/    
-    public function showLogin() {
+    /*-------------------------INICIAR SESION-------------------------------------------*/
+    public function showLogin()
+    {
         return view('LogRegRecViews.login');
     }
-    
-    public function login(Request $request) {
+
+    public function login(Request $request)
+    {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
-    
+
         $user = User::where('email', $request->email)->first();
-    
+
         if (!$user || !Hash::check($request->password, $user->password)) {
             return back()->with('error', 'Correo o contraseña incorrectos');
         }
-    
-        // Si el login es exitoso, puedes guardar al usuario en sesión
+
+        // Login exitoso: guardamos el usuario en sesión
         session(['user' => $user]);
-    
-        return redirect('/dashboard'); // luego puedes crear esta ruta principal del sistema
+
+        // REDIRECCIÓN SEGÚN ROL
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+
+        // Si no es admin, asume que es veterinario
+        return redirect()->route('veterinario.index');
     }
 
     /*-------------------------------VALIDACIÓN DE PREGUNTA-------------------------------------*/
 
-    public function showForgot() {
+    public function showForgot()
+    {
         return view('LogRegRecViews.recuperar');
     }
-    
-    public function buscarPregunta(Request $request) {
+
+    public function buscarPregunta(Request $request)
+    {
         $request->validate([
-            'email' => 'required|email'
+            'email' => 'required|email',
         ]);
-    
+
         $user = User::where('email', $request->email)->first();
-    
+
         if (!$user) {
             return back()->with('error', 'Correo no encontrado');
         }
-    
+
         // Guardamos la pregunta y el correo en sesión temporalmente
-        return back()
-            ->with('pregunta', $user->security_question)
-            ->with('email', $user->email);
+        return back()->with('pregunta', $user->security_question)->with('email', $user->email);
     }
-    
-    public function validarRespuesta(Request $request) {
+
+    public function validarRespuesta(Request $request)
+    {
         $request->validate([
             'email' => 'required|email',
-            'respuesta' => 'required'
+            'respuesta' => 'required',
         ]);
-    
+
         $user = User::where('email', $request->email)->first();
-    
+
         if (!$user || strtolower($user->security_answer) !== strtolower($request->respuesta)) {
             return back()->with('error', 'Respuesta incorrecta');
         }
-    
+
         // Guardar email en sesión y redirigir a vista de nueva contraseña
         session(['email' => $user->email]);
         return redirect()->route('forgot.nueva');
@@ -100,30 +114,30 @@ class AuthController extends Controller
 
     /*--------------------------ACTUALIZAR CONTRASEÑA------------------------------------------*/
 
-    public function actualizarContraseña(Request $request) {
+    public function actualizarContraseña(Request $request)
+    {
         $request->validate([
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
-    
+
         $email = session('email');
-    
+
         if (!$email) {
             return redirect()->route('forgot.form')->with('error', 'Sesión expirada. Intenta nuevamente.');
         }
-    
+
         $user = User::where('email', $email)->first();
-    
+
         if (!$user) {
             return redirect()->route('forgot.form')->with('error', 'Usuario no encontrado.');
         }
-    
+
         $user->password = Hash::make($request->password);
         $user->save();
-    
+
         // Limpiar la sesión de recuperación
         session()->forget('email');
-    
+
         return redirect()->route('login.form')->with('success', 'Contraseña actualizada correctamente. Ahora puedes iniciar sesión.');
     }
-    
 }

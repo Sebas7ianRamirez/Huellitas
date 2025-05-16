@@ -1,0 +1,239 @@
+/* ============================
+    Reset y estilos base
+   ============================ */
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    color: #000; /* Color base para texto */
+}
+
+/* ============================
+    Header
+   ============================ */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 3px solid #1e4d91;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+header h1 {
+    color: #1e4d91;
+    font-size: 22px;
+    margin: 0;
+}
+
+.login-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #eff5ff;
+    color: #16396e;
+    padding: 4px 9px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    border: #16396e;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(30, 77, 145, 0.06);
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #16396e;
+    color: #fff;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+}
+
+/* ============================
+    Contenedor principal
+   ============================ */
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 60px);
+}
+
+/* ============================
+    Sidebar (Menú lateral)
+   ============================ */
+.sidebar {
+    width: 10%;
+    background-color: #1e4d91;
+    padding: 20px;
+    color: white;
+}
+
+.perrito-img {
+    width: 95%;
+    max-width: 200px; /* Limita tamaño máximo */
+    height: auto;
+    display: block;
+    margin: 0 auto 16px auto;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 15px 0;
+}
+
+.sidebar-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* ============================
+    Contenido principal
+   ============================ */
+.main-content {
+    flex-grow: 1;
+    margin: 0;
+    padding: 20px;
+    background-image: url("/Imagenes/fondo.png");
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+}
+/* ============================
+    Secciones inventario y donaciones
+   ============================ */
+.inventario-container,
+.donaciones-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.donaciones-container {
+    background: #ffd114;
+}
+
+.inventario-container {
+    background: #ffd114;
+}
+/* ============================
+    Títulos de sección
+   ============================ */
+.section-title {
+    color: #1e4d91;
+    border-bottom: 2px solid #1e4d91;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* ============================
+    Tablas de inventario y donaciones
+   ============================ */
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 0 0;
+}
+
+.inventory-table th,
+.inventory-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.inventory-table th {
+    background-color: #ff6c11;
+    color: white;
+}
+
+input[type="number"].stock-input {
+    width: 70px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1.5px solid #a3c1ff;
+    border-radius: 6px;
+    background-color: #eff5ff;
+    color: #1a1a1a;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+input[type="number"].stock-input:focus {
+    border-color: #5a9cff;
+    box-shadow: 0 0 6px rgba(90, 156, 255, 0.5);
+    background-color: #e3ecff;
+}
+
+.btn-Actualizar {
+    width: 100%;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: #ff6c11; /* Azul un poco más claro que #0d47a1 */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(21, 101, 192, 0.4);
+}
+
+.btn-Actualizar:hover {
+    background-color: #1e4d91; /* Azul más brillante para hover */
+    box-shadow: 0 6px 10px rgba(30, 136, 229, 0.6);
+}
+
+.btn-atendida {
+    width: 100%;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: #ff6c11; /* Azul un poco más claro que #0d47a1 */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(21, 101, 192, 0.4);
+}
+
+.btn-atendida:hover {
+    background-color: #1e4d91; /* Azul más brillante para hover */
+    box-shadow: 0 6px 10px rgba(30, 136, 229, 0.6);
+}
+
+/* ============================
+    Responsive: columnas lado a lado en pantallas grandes
+   ============================ */
+@media (min-width: 900px) {
+    .main-content {
+        display: flex;
+        gap: 30px;
+    }
+
+    .inventario-container,
+    .donaciones-container {
+        flex: 1; /* Cada uno ocupa mitad del ancho */
+        margin-bottom: 0; /* Sin margen inferior para evitar espacios extra */
+    }
+}
